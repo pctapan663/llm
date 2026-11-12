@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm"
+version = "0.1.0"
+description = "A large language model built from scratch: tokenizer, model, and training."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["tokenizer*", "model*", "train*", "data*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "tokenizer"]
+pythonpath = ["."]
+addopts = "-ra"
